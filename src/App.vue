@@ -1,30 +1,21 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  {{ articles }}
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<script lang="ts">
+import { useStore } from "vuex";
+import { ref } from "vue";
+export default {
+  name: "app",
+  setup(): Record<string, any> {
+    const store = useStore();
+    const articles = ref([]);
+    store.dispatch("jv/get", "articles").then((res) => {
+      articles.value = Object.values(res._jv.data);
+    });
+    return {
+      articles,
+    };
+  },
+};
+</script>

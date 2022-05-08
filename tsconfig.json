@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
     "target": "esnext",
     "module": "esnext",
     "strict": true,
@@ -13,7 +16,8 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "jest"
+      "jest",
+      "resize-observer-browser"
     ],
     "paths": {
       "@/*": [
@@ -24,7 +28,10 @@
       "esnext",
       "dom",
       "dom.iterable",
-      "scripthost"
+      "scripthost",
+      "es2015",
+      "es2016",
+      "es2018.promise"
     ]
   },
   "include": [
@@ -33,7 +40,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "server.ts"  ],
   "exclude": [
     "node_modules"
   ]
